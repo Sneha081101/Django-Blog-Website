@@ -7,7 +7,7 @@ from blog.models import Post
 
 #html
 def home(request):
-    allPosts = Post.objects.all().order_by('-views')[0:2]
+    allPosts = Post.objects.all().order_by('-views')[0:3]
     context = {'allPosts':allPosts}
     return render(request, "home/home.html",context)
 
@@ -52,7 +52,7 @@ def handleSignUp(request):
         pass2=request.POST['pass2']
 
         # check for errorneous input
-        if len(username)<10:
+        if len(username)>10:
             messages.error(request, " Your user name must be under 10 characters")
             return redirect('home')
 
