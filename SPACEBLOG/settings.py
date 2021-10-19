@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-762*1f65q5ajtxpt^e#xxxm_-m&(ytdewc_a(nov0r@s#gn-_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spaceblog.herokuapp.com']
 
 
 # Application definition
@@ -79,11 +79,23 @@ WSGI_APPLICATION = 'SPACEBLOG.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#DATABASES = {
+   # 'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+     #   'NAME': BASE_DIR / 'db.sqlite3',
+    #}
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default' : {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd18qmkhrkbh5eh',
+        'USER': 'wlyjowndrcocwt',
+        'PASSWORD': '000c8213a02b3c09ae46a892225ce079b4b4228f356b0a656a5222f013a9373e',
+        'HOST': 'ec2-23-22-243-103.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
+
 }
 
 
@@ -124,7 +136,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,  "static"),
 ]
@@ -139,5 +152,4 @@ MESSAGE_TAGS = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+
